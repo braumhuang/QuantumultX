@@ -6,7 +6,7 @@
 # 脚本将在每天上午9:00执行, 您可以修改执行时间。
 ###########################################
 [mitm] 
-hostname= c.tieba.baidu.com
+hostname = c.tieba.baidu.com
 
 [rewrite_local]
 # 获取Cookie
