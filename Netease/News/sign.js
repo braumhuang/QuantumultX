@@ -27,7 +27,7 @@ sign()
 function sign() {
   if (bodyVal) {
     let url = { url: `https://c.m.163.com/uc/api/sign/v2/commit`, headers: cookieVal }
-    url.body = bodyVal
+    url["body"] = bodyVal
     chavy.post(url, (error, response, data) => {
       chavy.log(`${cookieName}, data: ${data}`)
       let result = JSON.parse(data)
@@ -96,7 +96,7 @@ function init() {
       $httpClient.post(url, cb)
     }
     if (isQuanX()) {
-      url.method = 'POST'
+      url["method"] = 'POST'
       $task.fetch(url).then((resp) => cb(null, {}, resp.body), (reason) => cb(reason.error, null, null))
     }
   }
