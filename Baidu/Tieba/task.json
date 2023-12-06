@@ -1,0 +1,10 @@
+{
+    "name": "贴吧签到",
+    "task": [
+        {
+            "config": "0 9 * * * https://raw.githubusercontent.com/braumhuang/QuantumultX/master/Baidu/Tieba/sign.js, tag=贴吧自动签到, img-url=https://raw.githubusercontent.com/braumhuang/QuantumultX/master/Baidu/Tieba/icon.png, enabled=true",
+            "addons": "https://raw.githubusercontent.com/braumhuang/QuantumultX/master/Baidu/Tieba/sign.js, tag=贴吧签到获取Cookie, update-interval=172800, opt-parser=true, enabled=true"
+        }
+    ],
+    "description": "百度贴吧自动签到"
+}
