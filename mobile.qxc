@@ -1,0 +1,127 @@
+// ==UserScript==
+// @ConfigName        QX配置文件
+// @UpdateTime        20241211
+// @ConfigURL         https://raw.githubusercontent.com/braumhuang/QuantumultX/master/mobile.qxc
+// ==/UserScript==
+
+
+# > 建议在「其他设置」里「GeoLite2」的「来源」填写使用下面链接「任选一个」，并开启「自动更新」
+; https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+; https://github.com/Hackl0us/GeoIP2-CN/raw/release/Country.mmdb
+
+
+[general]
+# > 用于节点延迟测试
+server_check_url= http://www.gstatic.com/generate_204
+# > 服务器测试超时时间 (毫秒)
+server_check_timeout = 3000
+# > 用于设置图标显示
+profile_img_url=https://raw.githubusercontent.com/braumhuang/QuantumultX/master/image/avatar.png
+# > 用于Check节点IP地址
+geo_location_checker=disabled
+# > 功能强大的解析器，用于引用资源的转换
+resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+# > 下列路径将不经过QuanX的处理
+excluded_routes=239.255.255.250/32, 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+# dns_exclusion_list中的域名将不使用fake-ip方式. 其它域名则全部采用fake-ip及远程解析的模式
+dns_exclusion_list=*.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.pingan.com.cn, *.cmbchina.com
+
+
+[task_local]
+# > 流媒体解锁查询
+event-interaction https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/streaming-ui-check.js, tag=流媒体解锁查询, img-url=arrowtriangle.right.square.system, enabled=true
+
+
+[rewrite_local]
+
+
+[rewrite_remote]
+https://raw.githubusercontent.com/510004015/Quantumult_X/Remote/Premium/WPSOffice.js, tag=WPS, update-interval=604800, opt-parser=false, enabled=true
+https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Weibo.conf, tag=微博, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/braumhuang/QuantumultX/master/rewrite/ZhiHu/AdBlock.qxr, tag=知乎, update-interval=604800, opt-parser=true, enabled=true
+https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf, tag=哔哩哔哩, update-interval=604800, opt-parser=false, enabled=true
+https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/YoutubeAds.conf, tag=YouTube, update-interval=604800, opt-parser=false, enabled=true
+https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/StartUp.conf, tag=墨鱼开屏合集, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/chongxie.txt, tag=广告拦截合集, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/cleanup.snippet, tag=小程序净化合集, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=BoxJS, update-interval=604800, opt-parser=false, enabled=false
+
+
+[server_local]
+
+
+[server_remote]
+
+
+[dns]
+# > QuantumultX开启IPV6方法，删去下面的「no-ipv6」，在「VPN」栏中，开启「兼容性增强」
+no-ipv6
+server=119.29.29.29
+server=/*.icloud.com/119.29.29.29
+server=/*.icloud.com.cn/119.29.29.29
+server=/*.tencent.com/119.29.29.29
+server=/*.weixin.com/119.29.29.29
+server=/tplogin.cn/system
+server=/tplinklogin.net/system
+server=/melogin.cn/system
+server=/falogin.cn/system
+
+
+[policy]
+static=苹果服务, direct, 香港节点, 台湾节点, 美国节点, 日本节点, 狮城节点, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+static=哔哩哔哩, direct, 香港节点, 台湾节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png
+static=全球加速, 自动选择, direct, 香港节点, 台湾节点, 日本节点, 狮城节点, 美国节点, proxy, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+static=国际媒体, 台湾节点, direct, 香港节点, 日本节点, 美国节点, 狮城节点, proxy, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png
+static=兜底分流, 自动选择, 全球加速, direct, 香港节点, 台湾节点, 日本节点, 狮城节点, 美国节点, proxy, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+#默认设置15分钟测速一次，可自行修改check-interval=后面的数值（单位：秒），tolerance=后面的数值不建议修改
+#将下面的url-latency-benchmark的内容替换成static，并删除[check-interval=86400, tolerance=0, ]即可手动选择节点
+url-latency-benchmark=自动选择, server-tag-regex=^(?!.*(?:网易|墨鱼)).*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+url-latency-benchmark=香港节点, server-tag-regex=(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+url-latency-benchmark=台湾节点, server-tag-regex=(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+url-latency-benchmark=日本节点, server-tag-regex=(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+url-latency-benchmark=狮城节点, server-tag-regex=(?=.*(新|狮|獅|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+url-latency-benchmark=美国节点, server-tag-regex=(?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, check-interval=86400, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+
+
+[filter_remote]
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list, tag=苹果服务, force-policy=苹果服务, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Filter/master/StreamingSE.list, tag=哔哩哔哩, force-policy=哔哩哔哩, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/WeChat/WeChat.list, tag=微信直连, force-policy=direct, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Filter/master/GoogleVoice.list, tag=Google Voice, force-policy=美国节点, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/OpenAI/OpenAI.list, tag=OpenAi, force-policy=美国节点, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list, tag=国内网站, force-policy=direct, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Filter/master/Streaming.list, tag=国际媒体, force-policy=国际媒体, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Proxy.list, tag=全球加速, force-policy=全球加速, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Filter/master/Unbreak.list, tag=规则修正, force-policy=direct, update-interval=604800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/fenliu.list, tag=广告拦截, update-interval=604800, opt-parser=false, enabled=true
+
+
+[filter_local]
+host-suffix, local, direct
+ip-cidr, 192.168.0.0/16, direct
+ip-cidr, 10.0.0.0/8, direct
+ip-cidr, 172.16.0.0/12, direct
+ip-cidr, 127.0.0.0/8, direct
+ip-cidr, 100.64.0.0/10, direct
+ip-cidr, 224.0.0.0/4, direct
+ip-cidr, 183.240.197.130/32, direct
+ip6-cidr, fe80::/10, direct
+# GeoIP（Geolocation IP）是一种技术，用于确定特定IP地址的地理位置信息，如国家、城市、经纬度等。
+geoip, cn, direct
+# 不在上述规则中(远程以及本地)的剩余请求，将走final 指定的节点/策略
+final, 兜底策略
+
+
+[http_backend]
+# BoxJS已不需要此配置
+;https://raw.githubusercontent.com/chavyleung/scripts/master/chavy.box.js, host=boxjs.com, tag=BoxJS, path=^/, enabled=true
+
+
+[mitm]
+# 本地主机名
+hostname = -www.google.com, -*.amemv.com, -*.snssdk.com, boxjs.net, boxjs.com,
+# 证书
+passphrase =
+p12 =
+
+skip_validating_cert = true
