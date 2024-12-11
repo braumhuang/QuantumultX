@@ -36,7 +36,7 @@ event-interaction https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/
 
 
 [rewrite_remote]
-https://raw.githubusercontent.com/510004015/Quantumult_X/Remote/Premium/WPSOffice.js, tag=WPS, update-interval=604800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/510004015/Quantumult_X/Remote/Premium/WPSOffice.js, tag=WPS, update-interval=604800, opt-parser=true, enabled=true
 https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Weibo.conf, tag=微博, update-interval=604800, opt-parser=false, enabled=true
 https://raw.githubusercontent.com/braumhuang/QuantumultX/master/rewrite/ZhiHu/AdBlock.qxr, tag=知乎, update-interval=604800, opt-parser=true, enabled=true
 https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf, tag=哔哩哔哩, update-interval=604800, opt-parser=false, enabled=true
@@ -109,7 +109,7 @@ ip6-cidr, fe80::/10, direct
 # GeoIP（Geolocation IP）是一种技术，用于确定特定IP地址的地理位置信息，如国家、城市、经纬度等。
 geoip, cn, direct
 # 不在上述规则中(远程以及本地)的剩余请求，将走final 指定的节点/策略
-final, 兜底策略
+final, 兜底分流
 
 
 [http_backend]
