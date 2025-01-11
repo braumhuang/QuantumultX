@@ -1253,7 +1253,6 @@ host, adsmind.tc.qq.com, reject
 host, livep.l.t002.ottcn.com, reject
 host, pgdt.ugdtimg.com, reject
 host, splashqqlive.gtimg.com, reject
-host, vv.video.qq.com, reject
 host, wa.gtimg.com, reject
 host, wxsnsdy.wxs.qq.com, reject
 host, wxsmsdy.video.qq.com, reject
